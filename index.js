@@ -51,87 +51,84 @@ function selectionScreen() {
     inquirer.prompt( [
         {
             type: 'list',
-            name: 'new-employee',
+            name: 'newEmployee',
             message: "Please choose one:",
             choices: ['Add an engineer', 'Add an intern', 'Finish building my team']
-        }
-    ]); if(selectionScreen.choices === choices[0]) {
-        return createEngineer();
-    } else if (selectionScreen.choices === choices[1]) {
-        return createIntern();
-    } else {
-        return writeToFile();
-    }
-}
-
-// Create a new Engineer and push to team member array
-function createEngineer() {
-    inquirer.prompt( [
-        {
-            type: 'input',
-            name: 'engineerName',
-            message: "What is the new engineer's name?"
-        },
-        {
-            type: 'input',
-            name: 'engineerId',
-            message: "Enter the engineer's employee ID:"
-        },
-        {
-            type: 'input',
-            name: 'engineerEmail',
-            message: "Enter the engineer's email address:"
-        },
-        {
-            type: 'input',
-            name: 'engineerGithub',
-            message: "Enter the engineer's GitHub username:"
-        }
-    ]).then(answer => {
-        const engineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.engineerGithub);
-        team.push(engineer);
-
-        console.log(team);
-        selectionScreen();
-    });
-}
-
-// Create a new intern and push to team member array
-function createIntern() {
-    inquirer.prompt( [
-        {
-            type: 'input',
-            name: 'internName',
-            message: "What is the intern's name?"
-        },
-        {
-            type: 'input',
-            name: 'internId',
-            message: "Enter the intern's employee ID:"
-        },
-        {
-            type: 'input',
-            name: 'internEmail',
-            message: "Enter the intern's email address:"
-        },
-        {
-            type: 'input',
-            name: 'internSchool',
-            message: "Enter the intern's school:"
-        }
+        }  
     ]) .then(answer => {
-        const intern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
-        team.push(intern);
+        switch(answer.newEmployee) {
+            case "Engineer":
+                inquirer.prompt([
+                    {
+                        type: 'input',
+                        name: 'engineerName',
+                        message: "What is the new engineer's name?"
+                    },
+                    {
+                        type: 'input',
+                        name: 'engineerId',
+                        message: "Enter the engineer's employee ID:"
+                    },
+                    {
+                        type: 'input',
+                        name: 'engineerEmail',
+                        message: "Enter the engineer's email address:"
+                    },
+                    {
+                        type: 'input',
+                        name: 'engineerGithub',
+                        message: "Enter the engineer's GitHub username:"
+                    }
+                ]) .then(answer => {
+                    const engineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.engineerGithub);
+                    team.push(engineer);
+            
+                    console.log(team);
+                    selectionScreen();
+                });
+                break;
 
-        console.log(team);
-        selectionScreen();
+            case "Intern":
+                inquirer.prompt([
+                    {
+                        type: 'input',
+                        name: 'internName',
+                        message: "What is the intern's name?"
+                    },
+                    {
+                        type: 'input',
+                        name: 'internId',
+                        message: "Enter the intern's employee ID:"
+                    },
+                    {
+                        type: 'input',
+                        name: 'internEmail',
+                        message: "Enter the intern's email address:"
+                    },
+                    {
+                        type: 'input',
+                        name: 'internSchool',
+                        message: "Enter the intern's school:"
+                    }
+                ]) .then(answer => {
+                    const intern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
+                    team.push(intern);
+            
+                    console.log(team);
+                    selectionScreen();
+                })
+                break;
+            case "Finished":
+                console.log("Rendering your team's webpage...")
+                break;
+        }
     })
 }
 
 // Create index.html file with team member info populated
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateHtml(data), (err) =>
-    err ? console.error(err) : console.log("Success! Your team's webpage has been created.")
+    err ? console.error(err) : console.log("Your team's webpage has successfully been created!")
 )}
 
 // Function to initialize app
