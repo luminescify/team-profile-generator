@@ -3,13 +3,13 @@ const renderManager = function(manager) {
     return `
     <div class="card col-4 mt-4 m-3" style="width: 15rem;">
         <div class="card-header bg-primary text-white card-title">
-            <h4>${manager.managerName}</h4>
+            <h4>${manager.name}</h4>
             <h6><i class="bi bi-cup-fill"></i> </i>Manager</h6>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${manager.managerId}</li>
-            <li class="list-group-item">Email: <a href="mailto:${manager.managerEmail}">${manager.managerEmail}</a></li>
-            <li class="list-group-item">Office Number: ${manager.managerOffice}</li>
+            <li class="list-group-item">ID: ${manager.id}</li>
+            <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+            <li class="list-group-item">Office Number: ${manager.office}</li>
         </ul>
     </div>
 `;
@@ -20,13 +20,13 @@ const renderEngineer = function(engineer) {
     return `
     <div class="card col-4 mt-4 m-3" style="width: 15rem;">
         <div class="card-header bg-primary text-white card-title">
-            <h4>${engineer.engineerName}</h4>
+            <h4>${engineer.name}</h4>
             <h6><i class="bi bi-github"></i> </i>Engineer</h6>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${engineer.engineerId}</li>
-            <li class="list-group-item">Email: <a href="mailto:${engineer.engineerEmail}">${engineer.engineerEmail}</a></li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.engineerGithub}">${engineer.engineerGithub}</a></li>
+            <li class="list-group-item">ID: ${engineer.id}</li>
+            <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></li>
         </ul>
     </div>
 `;
@@ -37,19 +37,19 @@ const renderIntern = function(intern) {
     return `
     <div class="card col-4 mt-4 m-3" style="width: 15rem;">
         <div class="card-header bg-primary text-white card-title">
-            <h4>${intern.internName}</h4>
+            <h4>${intern.name}</h4>
             <h6><i class="bi bi-envelope-fill"></i> </i>Intern</h6>
         </div>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${intern.internId}</li>
-            <li class="list-group-item">Email: <a href="mailto:${intern.internEmail}">${intern.internEmail}</a></li>
-            <li class="list-group-item">School: ${intern.internSchool}</li>
+            <li class="list-group-item">ID: ${intern.id}</li>
+            <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+            <li class="list-group-item">School: ${intern.school}</li>
         </ul>
     </div>
 `;
 }
 
-function generateHtml(data) {
+generateHtml = (data) => {
     // Array for cards
     let cardArray = [];
 
@@ -112,4 +112,5 @@ const generateTeamPage = function(employeeCards) {
 `;
 }
 
+// Export to index.js
 module.exports = generateHtml;
