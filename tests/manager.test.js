@@ -1,4 +1,4 @@
-const Manager = require("../lib/intern");
+const Manager = require("../lib/manager");
 
 test("Should create a new manager object if provided valid arguments", () => {
     const manager = new Manager();
@@ -10,9 +10,9 @@ test("Should successfully set manager info", () => {
     const id = "268459"
     const email = "ileahd96@gmail.com"
     const officeNumber = "560"
-    const engineer = new Intern(name, id, email, officeNumber)
-    expect(engineer.name).toBe(name)
-    expect(engineer.id).toBe(id)
-    expect(engineer.email).toBe(email)
-    expect(engineer.officeNumber).toBe(officeNumber)
+    const manager = new Manager(name, id, email, officeNumber)
+    expect(manager.name).toBe(name)
+    expect(manager.id).toBe(id)
+    expect(manager.email).toBe(email)
+    expect(manager.officeNumber).toBe(officeNumber)
 })

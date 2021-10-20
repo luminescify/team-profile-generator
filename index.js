@@ -7,12 +7,10 @@ const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
 
-// HTML Page Creation
-// const generateHtml = require('./src/generateHTML')
-
 // Team Member Array
 const team = [];
 
+// Selection screen function
 function selectionScreen() {
     inquirer
         .prompt([
@@ -67,7 +65,7 @@ function createManager() {
     })
 }
 
-// Create a new engineer
+// Create new engineer
 function createEngineer() {
     inquirer
         .prompt([
@@ -181,6 +179,7 @@ const renderIntern = function(data) {
 `;
 }
 
+// Generates employee cards based on role + pushes to array
 function generateHtml() {
     console.log(team);
     // Array for cards
@@ -215,6 +214,7 @@ function generateHtml() {
     return generateTeam;
 }
 
+// Generates HTML page and appends employee cards
 const generateTeamPage = function(employeeCards) {
     return `
     <!DOCTYPE html>
@@ -251,4 +251,5 @@ function writeToFile() {
     err ? console.error(err) : console.log("Your team's webpage has successfully been created!")
 )}
 
+// Run initial function to begin application
 createManager();
