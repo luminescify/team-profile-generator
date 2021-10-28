@@ -29,11 +29,13 @@ This project uses the inquirer package to prompt you with a series of questions 
 
 Once all questions have been answered, a completed index.html file will be generated at the root of the directory.
 
-## Mockup
+## Demo
 
 The following gif shows how a user would utilize the application in the command line.
 
 ![Gif](./assets/images/Mockup-TPG.gif)
+
+https://youtu.be/jT7g4xtzmXs
 
 ## License
 
